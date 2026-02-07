@@ -1,37 +1,40 @@
 name: 📖 User Story
 description: Define a user story for development
-title: "[STORY] "
+title: "[Story]: "
 labels: ["📖 user-story"]
-assignees:
-  - JourneyUnbound
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for creating a user story! Please fill out the information below.
+        Thanks for creating a user story! Please fill out the details below.
 
   - type: textarea
     id: user-story
     attributes:
-      label: 📖 User Story
-      description: Write as - "As a [user type], I want [goal], so that [benefit]"
+      label: User Story
+      description: As a [type of user], I want [goal] so that [benefit]
       placeholder: |
-        **As a** boundary-conscious user
-        **I want** to see all my hard limits in one place across all categories
-        **So that** I can review my boundaries and share them with partners
+        As a [type of user]
+        I want [goal]
+        So that [benefit]
     validations:
       required: true
 
   - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Additional background or context for this story
+      placeholder: Provide any relevant context...
+    validations:
+      required: false
+
+  - type: textarea
     id: acceptance-criteria
     attributes:
-      label: 🎯 Acceptance Criteria
-      description: Define what needs to be true for this story to be complete
+      label: Acceptance Criteria
+      description: What needs to be true for this story to be complete?
       placeholder: |
-        **Given** [context/precondition]
-        **When** [action/event]
-        **Then** [expected outcome]
-
         - [ ] Criterion 1
         - [ ] Criterion 2
         - [ ] Criterion 3
@@ -39,135 +42,59 @@ body:
       required: true
 
   - type: textarea
-    id: business-value
+    id: technical-notes
     attributes:
-      label: 💼 Business Value
-      description: Why is this important? What value does it provide?
-      placeholder: Users need to be able to review all their boundaries at once, especially when communicating with new partners...
+      label: Technical Notes
+      description: Any technical considerations or implementation notes
+      placeholder: Technical details, dependencies, constraints...
     validations:
-      required: true
-
-  - type: input
-    id: current-version
-    attributes:
-      label: Current Version
-      description: What version are we currently on when this story was created?
-      placeholder: V6.0
-    validations:
-      required: true
-
-  - type: dropdown
-    id: target-milestone
-    attributes:
-      label: Target Milestone
-      description: Which version will this story be implemented in?
-      options:
-        - V7.0
-        - V8.0
-        - V9.0
-        - Future/Backlog
-    validations:
-      required: true
+      required: false
 
   - type: dropdown
     id: priority
     attributes:
-      label: 📊 Priority
+      label: 🎯 Priority
       description: How important is this story?
       options:
-        - "🔴 High - Critical user need"
-        - "🟠 Medium - Important enhancement"
-        - "🟡 Low - Nice to have"
+        - "P: Do Soon"
+        - "P: Do Later"
+        - "P: Idea"
+      default: 0
     validations:
-      required: true
+      required: false
 
-  - type: checkboxes
-    id: user-impact
+  - type: dropdown
+    id: status
     attributes:
-      label: 👥 User Impact
-      description: Who will this affect?
+      label: Status
+      description: Current status of this issue
       options:
-        - label: All users
-        - label: Specific user type (specify in description)
-        - label: Edge case
-
-  - type: textarea
-    id: technical-notes
-    attributes:
-      label: 🔧 Technical Notes
-      description: Any technical implementation details, dependencies, or constraints
-      placeholder: |
-        **Depends On:**
-        - [ ] Issue #___
-        - [ ] Feature: _______________
-
-        **Affects:**
-        - [ ] Data structure
-        - [ ] UI components
-        - [ ] Performance
-        - [ ] Mobile experience
-
-  - type: textarea
-    id: tasks
-    attributes:
-      label: 📋 Tasks
-      description: Break down into concrete development tasks
-      placeholder: |
-        - [ ] Task 1
-        - [ ] Task 2
-        - [ ] Task 3
-        - [ ] Write tests
-        - [ ] Update documentation
+        - "S: Brain Dump"
+        - "S: Active Work"
+        - "S: Backlog"
+        - "S: Done"
+      default: 0
     validations:
-      required: true
+      required: false
+
+  - type: dropdown
+    id: milestone
+    attributes:
+      label: Milestone
+      description: Which version should this story be included in?
+      options:
+        - "V: 6.0"
+        - "V: 7.0"
+        - "V: 8.0"
+        - "Backlog"
+      default: 3
+    validations:
+      required: false
 
   - type: textarea
-    id: testing-scenarios
+    id: additional
     attributes:
-      label: 🧪 Testing Scenarios
-      description: How should this be tested?
-      placeholder: |
-        1. Test scenario 1
-        2. Test scenario 2
-        3. Edge cases to consider
-
-  - type: checkboxes
-    id: responsive-design
-    attributes:
-      label: 📱 Responsive Design
-      description: How should this work on different screen sizes?
-      options:
-        - label: Desktop (>1024px)
-        - label: Tablet (768px-1024px)
-        - label: Mobile (<768px)
-
-  - type: checkboxes
-    id: definition-of-done
-    attributes:
-      label: 📊 Definition of Done
-      description: What needs to be true for this story to be considered complete?
-      options:
-        - label: Feature works as described
-        - label: All acceptance criteria met
-        - label: Tested on multiple browsers
-        - label: Tested on mobile
-        - label: No console errors
-        - label: Code committed and pushed
-        - label: Documentation updated (if needed)
-        - label: Milestone updated when complete
-
-  - type: textarea
-    id: related-issues
-    attributes:
-      label: 🔗 Related
-      description: Link related user stories, issues, or documentation
-      placeholder: |
-        - Related to: #___
-        - Blocks: #___
-        - Blocked by: #___
-
-  - type: markdown
-    attributes:
-      value: |
-        ---
-        **Note:** This story will be assigned to your selected target milestone where it will be completed.
+      label: Additional Context
+      description: Any other information, mockups, or related issues
+    validations:
+      required: false
