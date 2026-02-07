@@ -1,168 +1,95 @@
 name: ✨ Feature Request
 description: Suggest a new feature or enhancement
-title: "[FEATURE] "
+title: "[Feature]: "
 labels: ["✨ enhancement"]
-assignees:
-  - JourneyUnbound
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for suggesting a feature! Please fill out the information below.
+        Thanks for suggesting a new feature! Please provide as much detail as possible.
 
   - type: textarea
     id: feature-description
     attributes:
-      label: 💡 Feature Description
-      description: A clear and concise description of the feature you'd like
-      placeholder: Add a modal dialog when clicking print that allows users to customize what appears in the print view
+      label: Feature Description
+      description: A clear and concise description of the feature you'd like to see
+      placeholder: Describe the feature...
     validations:
       required: true
 
   - type: textarea
-    id: problem-solved
+    id: problem
     attributes:
-      label: 🎯 Problem This Solves
-      description: What problem does this feature address?
-      placeholder: Currently, print view shows ALL items including blank/unselected ones. Users may want to print only their favorites or hard limits...
+      label: Problem Statement
+      description: What problem does this feature solve?
+      placeholder: Explain the need for this feature...
+    validations:
+      required: false
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: How should this feature work?
+      placeholder: Describe your proposed solution...
     validations:
       required: true
 
   - type: textarea
-    id: user-story
+    id: alternatives
     attributes:
-      label: 👤 User Story
-      description: Write as - "As a [user type], I want [goal], so that [benefit]"
-      placeholder: |
-        **As a** user preparing to share my checklist
-        **I want** to filter what gets printed
-        **So that** I only share relevant information with my partner
+      label: Alternative Solutions
+      description: Have you considered any alternative solutions or features?
+      placeholder: Describe alternatives you've considered...
     validations:
-      required: true
-
-  - type: textarea
-    id: proposed-solution
-    attributes:
-      label: 📋 Proposed Solution
-      description: Describe how you envision this feature working
-      placeholder: |
-        1. Clicking "Print" opens a modal overlay
-        2. Modal shows filter checkboxes
-        3. User selects what to include
-        4. "Preview & Print" button applies filters
-    validations:
-      required: true
-
-  - type: textarea
-    id: ui-ux-considerations
-    attributes:
-      label: 🎨 UI/UX Considerations
-      description: How should this look and feel? Where should it appear?
-      placeholder: Modal appears centered over current view, mobile-friendly touch targets...
-
-  - type: checkboxes
-    id: technical-considerations
-    attributes:
-      label: 🔧 Technical Considerations
-      description: Any technical requirements or constraints?
-      options:
-        - label: Requires new data structure
-        - label: Needs UI changes
-        - label: Affects existing features
-        - label: Other (specify in description)
-
-  - type: textarea
-    id: responsive-mobile
-    attributes:
-      label: 📱 Responsive/Mobile Considerations
-      description: How should this work on mobile devices?
-      placeholder: Modal should be full-screen on mobile, dismiss on swipe down...
-
-  - type: textarea
-    id: alternative-solutions
-    attributes:
-      label: ✨ Alternative Solutions
-      description: Have you considered any alternative approaches?
-      placeholder: Could also add a "print settings" page instead of a modal...
-
-  - type: input
-    id: current-version
-    attributes:
-      label: Current Version
-      description: What version are we currently on when requesting this feature?
-      placeholder: V6.0
-    validations:
-      required: true
-
-  - type: dropdown
-    id: target-milestone
-    attributes:
-      label: Target Milestone
-      description: Which version should this feature be implemented in?
-      options:
-        - V7.0
-        - V8.0
-        - V9.0
-        - Future/Backlog
-    validations:
-      required: true
+      required: false
 
   - type: dropdown
     id: priority
     attributes:
-      label: 📊 Priority
+      label: 🎯 Priority
       description: How important is this feature?
       options:
-        - "🔴 Must Have - Critical for next version"
-        - "🟠 Should Have - Important but not blocking"
-        - "🟡 Nice to Have - Would improve experience"
-        - "🟢 Future - Long-term consideration"
+        - "P: Idea"
+        - "P: Do Later"
+        - "P: Do Soon"
+        - "P: Do Now"
+      default: 0
     validations:
-      required: true
+      required: false
 
   - type: dropdown
-    id: estimated-effort
+    id: status
     attributes:
-      label: Estimated Effort
-      description: How much work do you think this will take?
+      label: Status
+      description: Current status of this issue
       options:
-        - "🍃 Small - Few hours"
-        - "🔨 Medium - 1-2 days"
-        - "🏔️ Large - Multiple days"
-        - "❓ Unknown - Needs investigation"
-
-  - type: textarea
-    id: acceptance-criteria
-    attributes:
-      label: ✅ Acceptance Criteria
-      description: What needs to be true for this feature to be considered complete?
-      placeholder: |
-        - [ ] Feature works as described
-        - [ ] All acceptance criteria met
-        - [ ] Tested on multiple browsers
-        - [ ] Tested on mobile
+        - "S: Brain Dump"
+        - "S: Active Work"
+        - "S: Backlog"
+        - "S: Done"
+      default: 0
     validations:
-      required: true
+      required: false
+
+  - type: dropdown
+    id: milestone
+    attributes:
+      label: Milestone
+      description: Which version should this feature be included in?
+      options:
+        - "V: 6.0"
+        - "V: 7.0"
+        - "V: 8.0"
+        - "Backlog"
+      default: 3
+    validations:
+      required: false
 
   - type: textarea
-    id: mockups-examples
+    id: additional
     attributes:
-      label: 📸 Mockups/Examples
-      description: Optional - Add sketches, mockups, or examples from other apps
-      placeholder: Attach images or describe similar features from other applications
-
-  - type: textarea
-    id: related-issues
-    attributes:
-      label: 🔗 Related Issues
-      description: Link any related issues or features
-      placeholder: |
-        - Related to: #__
-        - Depends on: #__
-        - Blocks: #__
-
-  - type: markdown
-    attributes:
-      value: |
-        ---
-        **Note:** This issue will be assigned to your selected target milestone where it will be implemented.
+      label: Additional Context
+      description: Add any other context, mockups, or screenshots about the feature request here
+    validations:
+      required: false
