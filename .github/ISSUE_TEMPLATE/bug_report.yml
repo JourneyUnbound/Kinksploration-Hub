@@ -1,0 +1,141 @@
+name: 🐛 Bug Report
+description: Report a bug or issue with the Kinksploration Checklist
+title: "[BUG] "
+labels: ["🐛 bug"]
+assignees:
+  - JourneyUnbound
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! Please fill out the information below.
+
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: 🐛 Bug Description
+      description: A clear and concise description of what the bug is
+      placeholder: When I click on the rating filter in ALL view, nothing happens...
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: location
+    attributes:
+      label: 📍 Location
+      description: Where does this bug occur?
+      options:
+        - label: ALL category view
+        - label: Specific category (specify in description)
+        - label: Print view
+        - label: Import/Export
+        - label: Search functionality
+        - label: Other (specify in description)
+
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: 🔄 Steps to Reproduce
+      description: How can we reproduce this bug?
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. Select '...'
+        4. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: ✅ Expected Behavior
+      description: What should happen?
+      placeholder: The items should filter to show only 5-star rated items
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual-behavior
+    attributes:
+      label: ❌ Actual Behavior
+      description: What actually happens?
+      placeholder: All items remain visible, filter does not apply
+    validations:
+      required: true
+
+  - type: input
+    id: found-version
+    attributes:
+      label: Found in Version
+      description: Which version did you discover this bug in?
+      placeholder: V6.0
+    validations:
+      required: true
+
+  - type: dropdown
+    id: target-version
+    attributes:
+      label: Target Fix Version
+      description: Which version should this be fixed in? (Milestone will be set to this)
+      options:
+        - V7.0
+        - V8.0
+        - Future
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: browser
+    attributes:
+      label: 💻 Browser
+      description: Which browser(s) does this affect?
+      options:
+        - label: Chrome/Edge
+        - label: Firefox
+        - label: Safari
+        - label: Mobile Safari (iOS)
+        - label: Mobile Chrome (Android)
+        - label: Other (specify in description)
+
+  - type: checkboxes
+    id: device
+    attributes:
+      label: 📱 Device
+      description: Which device type?
+      options:
+        - label: Desktop
+        - label: Mobile
+        - label: Tablet
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: ⚠️ Severity
+      description: How severe is this bug?
+      options:
+        - "🔴 Critical - Breaks core functionality"
+        - "🟠 High - Major feature doesn't work"
+        - "🟡 Medium - Minor inconvenience"
+        - "🟢 Low - Cosmetic issue"
+    validations:
+      required: true
+
+  - type: textarea
+    id: possible-solution
+    attributes:
+      label: 💡 Possible Solution
+      description: Optional - If you have ideas on how to fix this
+      placeholder: The renderAllItems() function likely doesn't check the ratingFilter state variable...
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: 🔍 Additional Context
+      description: Add any other context, screenshots, or information about the problem
+      placeholder: Add screenshots, console errors, or other relevant information here
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        **Note:** This issue will be assigned to milestone V7.0 (or your selected target version) where it will be resolved.
