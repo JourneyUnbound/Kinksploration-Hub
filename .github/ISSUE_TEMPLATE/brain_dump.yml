@@ -1,0 +1,79 @@
+name: 🧠 Brain Dump
+description: Quick idea or thought - figure out the details later
+title: "[IDEA] "
+labels: ["💡 idea"]
+assignees:
+  - JourneyUnbound
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🧠 Brain Dump
+        Capture your thought quickly - you can add details later!
+
+  # Just the idea - REQUIRED
+  - type: textarea
+    id: idea
+    attributes:
+      label: "💭 What's the idea?"
+      description: "Just write it down - don't overthink it!"
+      placeholder: "It would be cool if..."
+    validations:
+      required: true
+
+  # Everything else is OPTIONAL
+  - type: textarea
+    id: context
+    attributes:
+      label: "📝 Any additional context? (optional)"
+      description: "Add details if you have them, skip if you don't"
+      placeholder: "This came up because..."
+    validations:
+      required: false
+
+  # Tool - OPTIONAL
+  - type: dropdown
+    id: tool
+    attributes:
+      label: "🔧 Which tool might this relate to? (optional)"
+      description: "Pick one if you know, skip if you don't"
+      options:
+        - Not sure yet
+        - Checklist
+        - Dashboard
+        - Journey (Kinksploration Journey)
+        - Boundaries (Boundary Builder)
+        - Scenes (Scene Planner)
+        - Contract (Contract Builder)
+        - Shop (Once-Upon-a-Kink)
+        - Hub-Global
+    validations:
+      required: false
+
+  # Quick priority gut check - OPTIONAL
+  - type: dropdown
+    id: priority_guess
+    attributes:
+      label: "🎯 Gut feeling - how important? (optional)"
+      description: "First instinct, don't overthink it"
+      options:
+        - "Not sure"
+        - "🟢 Nice to have someday"
+        - "🟡 Could be useful"
+        - "🟠 This could be important"
+        - "🔴 This feels urgent!"
+    validations:
+      required: false
+
+  # Just a place for random notes
+  - type: textarea
+    id: notes
+    attributes:
+      label: "📌 Random notes (optional)"
+      description: "Anything else bouncing around your brain?"
+      placeholder: "Also thinking about... Related to... Reminds me of..."
+    validations:
+      required: false
+
+
