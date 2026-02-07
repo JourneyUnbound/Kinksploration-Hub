@@ -39,7 +39,7 @@ body:
         - [ ] Criterion 2
         - [ ] Criterion 3
     validations:
-      required: true
+      required: false
 
   - type: textarea
     id: technical-notes
