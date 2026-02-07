@@ -33,7 +33,7 @@ body:
       description: How should this feature work?
       placeholder: Describe your proposed solution...
     validations:
-      required: true
+      required: false
 
   - type: textarea
     id: alternatives
