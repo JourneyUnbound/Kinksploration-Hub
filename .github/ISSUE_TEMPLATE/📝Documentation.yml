@@ -1,0 +1,32 @@
+name: Documentation
+description: Update docs, guides, or help content
+title: "[DOCS] "
+labels: ["Type: Documentation 📝"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: "What needs documentation?"
+      placeholder: "Describe what needs to be documented or updated"
+    validations:
+      required: true
+  - type: checkboxes
+    id: location
+    attributes:
+      label: "Location"
+      options:
+        - label: "README"
+        - label: "User Guide"
+        - label: "Developer Docs"
+        - label: "API Documentation"
+        - label: "Help Section"
+  - type: textarea
+    id: current-state
+    attributes:
+      label: "📋 Current State"
+      description: "What exists now or what is missing?"
+  - type: textarea
+    id: proposed
+    attributes:
+      label: "✍️ Proposed Content"
+      placeholder: "Outline or draft the content needed"
