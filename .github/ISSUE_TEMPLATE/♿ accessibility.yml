@@ -8,7 +8,7 @@ assignees: []
 ## ♿ Accessibility Issue
 
 **What accessibility barrier exists?**
-<!-- Describe the issue -->
+[Describe the barrier here]
 
 **Who is affected?**
 - [ ] Screen reader users
@@ -24,14 +24,14 @@ assignees: []
 ## 📍 Location
 
 **Where is the barrier?**
-<!-- Specific page, component, or feature -->
+[Specify page, component, or URL]
 
 ---
 
 ## 🚫 Current Behavior
 
 **What happens now?**
-<!-- Describe the accessibility problem -->
+[Describe the accessibility problem]
 
 **Assistive tech tested:**
 - [ ] Screen reader (NVDA/JAWS/VoiceOver)
@@ -45,7 +45,7 @@ assignees: []
 ## ✅ Expected Behavior
 
 **What should happen?**
-<!-- Describe the accessible experience -->
+[Describe the accessible experience]
 
 ---
 
@@ -72,12 +72,12 @@ assignees: []
 ## 💡 Proposed Solution
 
 **How can we fix this?**
-<!-- Technical approach or implementation -->
+[Describe the technical approach or implementation]
 
 **Required changes:**
-- 
-- 
-- 
+- [ ] Update HTML markup
+- [ ] Fix CSS styling
+- [ ] Add ARIA attributes
 
 ---
 
@@ -96,7 +96,7 @@ assignees: []
 ## 📸 Evidence
 
 **Screenshots or recordings:**
-<!-- Show the problem and/or solution -->
+[Drag and drop images here]
 
 ---
 
