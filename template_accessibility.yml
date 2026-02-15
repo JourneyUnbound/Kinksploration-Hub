@@ -1,0 +1,18 @@
+---
+name: Template Accessibility
+description: Template for accessibility questions
+body:
+  - type: input
+    label: "Your Accessibility Needs"
+    placeholder: "Type your needs here..."
+  - type: input
+    label: "Other Relevant Information"
+    placeholder: "Provide additional context here..."
+  - type: textarea
+    label: "Comments"
+    placeholder: "Any other comments or questions..."
+  - type: checkbox
+    label: "Confidentiality Agreement"
+    description: "I agree to the confidentiality terms"
+    required: true
+---
