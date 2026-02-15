@@ -1,15 +1,5 @@
 ---
-name: "♿ Accessibility"
-about: " For accessibility issues"
-title: ''
-labels: ''
-assignees: ''
-
----
-
----
 name: Accessibility
-about: Improve accessibility (a11y)
 title: '[A11Y] '
 labels: 'TP: Accessibility'
 assignees: []
