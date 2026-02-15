@@ -3,3 +3,9 @@ contact_links:
   - name: 📧 Email Scarlet Woods
     url: mailto:scarlet@journeyunbound.ca
     about: Questions, feedback, or support? Reach out directly
+  - name: 💬 Community Discussion
+    url: https://github.com/YOUR_USER_OR_ORG/YOUR_REPO/discussions
+    about: Ask questions or share ideas with the community.
+  - name: 📖 Project Wiki
+    url: https://github.com/YOUR_USER_OR_ORG/YOUR_REPO/wiki
+    about: Read the full documentation for this project.
