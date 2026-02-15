@@ -1,107 +1,89 @@
----
 name: Accessibility
-title: '[A11Y] '
-labels: 'TP: Accessibility'
-assignees: []
----
-
-## ♿ Accessibility Issue
-
-**What accessibility barrier exists?**
-[Describe the barrier here]
-
-**Who is affected?**
-- [ ] Screen reader users
-- [ ] Keyboard-only navigation
-- [ ] Low vision users
-- [ ] Color blind users
-- [ ] Motor impairment users
-- [ ] Cognitive disabilities
-- [ ] Other: _______________
-
----
-
-## 📍 Location
-
-**Where is the barrier?**
-[Specify page, component, or URL]
-
----
-
-## 🚫 Current Behavior
-
-**What happens now?**
-[Describe the accessibility problem]
-
-**Assistive tech tested:**
-- [ ] Screen reader (NVDA/JAWS/VoiceOver)
-- [ ] Keyboard only
-- [ ] Browser zoom
-- [ ] Color contrast checker
-- [ ] Other: _______________
-
----
-
-## ✅ Expected Behavior
-
-**What should happen?**
-[Describe the accessible experience]
-
----
-
-## 📜 WCAG Criteria
-
-**Which WCAG guidelines does this violate?**
-- [ ] 1.1 Text Alternatives
-- [ ] 1.3 Adaptable
-- [ ] 1.4 Distinguishable (color contrast)
-- [ ] 2.1 Keyboard Accessible
-- [ ] 2.4 Navigable
-- [ ] 3.1 Readable
-- [ ] 3.2 Predictable
-- [ ] 4.1 Compatible
-- [ ] Other: _______________
-
-**Level:**
-- [ ] A (must fix)
-- [ ] AA (should fix)
-- [ ] AAA (nice to have)
-
----
-
-## 💡 Proposed Solution
-
-**How can we fix this?**
-[Describe the technical approach or implementation]
-
-**Required changes:**
-- [ ] Update HTML markup
-- [ ] Fix CSS styling
-- [ ] Add ARIA attributes
-
----
-
-## 🧪 Testing Checklist
-
-- [ ] Screen reader announcement correct
-- [ ] Keyboard navigation works
-- [ ] Color contrast meets AA standards
-- [ ] Focus indicators visible
-- [ ] ARIA labels appropriate
-- [ ] Tab order logical
-- [ ] No keyboard traps
-
----
-
-## 📸 Evidence
-
-**Screenshots or recordings:**
-[Drag and drop images here]
-
----
-
-## 🔗 Resources
-
-- WCAG Reference: _______________
-- Similar example: _______________
-- Related issue: #___
+description: Report an accessibility barrier or WCAG violation.
+title: "[A11Y] "
+labels: ["Type: Accessibility ♿"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## ♿ Accessibility Issue
+  - type: textarea
+    id: barrier-description
+    attributes:
+      label: "What accessibility barrier exists?"
+      placeholder: "Describe the issue..."
+    validations:
+      required: true
+  - type: checkboxes
+    id: affected-users
+    attributes:
+      label: "Who is affected?"
+      options:
+        - label: "Screen reader users"
+        - label: "Keyboard-only navigation"
+        - label: "Low vision users"
+        - label: "Color blind users"
+        - label: "Motor impairment users"
+        - label: "Cognitive disabilities"
+  - type: input
+    id: other-affected
+    attributes:
+      label: "Other affected users"
+      placeholder: "Specify here..."
+  - type: textarea
+    id: location
+    attributes:
+      label: "📍 Location"
+      description: "Where is the barrier? (Specific page, component, or feature)"
+      placeholder: "e.g., The 'Submit' button on the Contact page"
+    validations:
+      required: true
+  - type: textarea
+    id: current-behavior
+    attributes:
+      label: "🚫 Current Behavior"
+      description: "What happens now?"
+    validations:
+      required: true
+  - type: checkboxes
+    id: assistive-tech
+    attributes:
+      label: "Assistive tech tested:"
+      options:
+        - label: "Screen reader (NVDA/JAWS/VoiceOver)"
+        - label: "Keyboard only"
+        - label: "Browser zoom"
+        - label: "Color contrast checker"
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: "✅ Expected Behavior"
+      description: "What should happen?"
+    validations:
+      required: true
+  - type: checkboxes
+    id: wcag-criteria
+    attributes:
+      label: "📜 WCAG Criteria"
+      options:
+        - label: "1.1 Text Alternatives"
+        - label: "1.3 Adaptable"
+        - label: "1.4 Distinguishable"
+        - label: "2.1 Keyboard Accessible"
+        - label: "2.4 Navigable"
+        - label: "3.1 Readable"
+        - label: "3.2 Predictable"
+        - label: "4.1 Compatible"
+  - type: dropdown
+    id: level
+    attributes:
+      label: "Compliance Level"
+      options:
+        - "A (must fix)"
+        - "AA (should fix)"
+        - "AAA (nice to have)"
+  - type: textarea
+    id: evidence
+    attributes:
+      label: "📸 Evidence"
+      description: "Drag and drop screenshots or recordings here."
