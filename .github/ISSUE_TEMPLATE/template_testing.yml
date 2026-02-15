@@ -1,0 +1,102 @@
+---
+name: Testing
+about: Test a feature or create test cases
+title: '[TEST] '
+labels: 'Type: Testing 🧪'
+assignees: ''
+---
+
+## 🧪 Testing Task
+
+**What needs testing?**
+<!-- Feature, fix, or component to test -->
+
+**Type of testing:**
+- [ ] Unit tests
+- [ ] Integration tests
+- [ ] End-to-end tests
+- [ ] Manual testing
+- [ ] Regression testing
+- [ ] Performance testing
+- [ ] Accessibility testing
+- [ ] Security testing
+- [ ] Other: _______________
+
+---
+
+## 📋 Test Scenarios
+
+**What should be tested?**
+
+### Scenario 1:
+**Given:** 
+**When:** 
+**Then:** 
+
+### Scenario 2:
+**Given:** 
+**When:** 
+**Then:** 
+
+### Scenario 3:
+**Given:** 
+**When:** 
+**Then:** 
+
+---
+
+## 📱 Test Environments
+
+**Where to test:**
+- [ ] Desktop Chrome
+- [ ] Desktop Firefox
+- [ ] Desktop Safari
+- [ ] Mobile Safari (iOS)
+- [ ] Mobile Chrome (Android)
+- [ ] Tablet
+- [ ] Other: _______________
+
+---
+
+## 📸 Test Data
+
+**What data is needed?**
+<!-- Test accounts, sample data, etc. -->
+
+---
+
+## ⚠️ Edge Cases
+
+**What unusual scenarios should be tested?**
+- 
+- 
+- 
+
+---
+
+## ✅ Testing Checklist
+
+- [ ] Happy path works
+- [ ] Error handling works
+- [ ] Edge cases covered
+- [ ] Mobile responsive
+- [ ] Accessibility verified
+- [ ] Performance acceptable
+- [ ] No console errors
+- [ ] Data saves correctly
+
+---
+
+## 🐛 Found Issues
+
+**Bugs discovered during testing:**
+- Issue #___
+- Issue #___
+
+---
+
+## 🔗 Related
+
+- Feature PR: #___
+- Test suite: _______________
+- Documentation: _______________
