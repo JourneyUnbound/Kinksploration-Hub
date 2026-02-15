@@ -1,5 +1,5 @@
 ---
-name: Accessibility
+name: "♿ Accessibility"
 about: " For accessibility issues"
 title: ''
 labels: ''
