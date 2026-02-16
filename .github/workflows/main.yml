@@ -1,0 +1,22 @@
+name: Project CI
+
+# This tells GitHub to run the script every time you push to 'main'
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Pulls your code onto GitHub's virtual server
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # 2. A simple message to show it works
+      - name: Run Workspace Check
+        run: |
+          echo "Starting automation for Kinksploration-Hub..."
+          ls -R
+          echo "Everything looks good!"
