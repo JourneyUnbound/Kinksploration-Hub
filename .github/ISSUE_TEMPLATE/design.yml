@@ -1,0 +1,81 @@
+name: "🎨Design"
+description: UI/UX improvements or design work
+title: "[DESIGN] "
+labels: ["TP: Design"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🎨 Design Request
+  - type: textarea
+    id: description
+    attributes:
+      label: "What needs design work?"
+      placeholder: "Describe the UI/UX that needs attention..."
+    validations:
+      required: true
+  - type: checkboxes
+    id: design-type
+    attributes:
+      label: "Type of design"
+      options:
+        - label: "New component/feature"
+        - label: "Redesign existing element"
+        - label: "Visual polish"
+        - label: "Layout/spacing"
+        - label: "Color/typography"
+        - label: "Responsive design"
+        - label: "Accessibility improvement"
+        - label: "Animation/interaction"
+  - type: input
+    id: other-design
+    attributes:
+      label: "Other Design Type"
+      placeholder: "Specify if you selected 'Other'..."
+  - type: textarea
+    id: location
+    attributes:
+      label: "📍 Location"
+      description: "Where is this in the app? (Specific page, component, or section)"
+  - type: checkboxes
+    id: devices
+    attributes:
+      label: "Affected devices"
+      options:
+        - label: "Desktop"
+        - label: "Tablet"
+        - label: "Mobile"
+        - label: "All"
+  - type: textarea
+    id: goals
+    attributes:
+      label: "🎯 Design Goals"
+      description: "What should this accomplish and how does it benefit the user?"
+      placeholder: "- Goal 1\n- Goal 2"
+  - type: textarea
+    id: ideas
+    attributes:
+      label: "💡 Design Ideas"
+      description: "Initial concepts, inspiration, or style considerations (Brand colors, Typography, Spacing)."
+      placeholder: "Sketches, mockups, or style references..."
+  - type: textarea
+    id: current-state
+    attributes:
+      label: "📸 Current State"
+      description: "Drag and drop screenshots of the existing design here."
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: "✅ Design Checklist"
+      options:
+        - label: "Follows brand guidelines"
+        - label: "Accessible (color contrast, text size)"
+        - label: "Responsive on all devices"
+        - label: "Consistent with existing patterns"
+        - label: "User-tested or validated"
+  - type: textarea
+    id: related
+    attributes:
+      label: "🔗 Related"
+      description: "Links to Design system, Brand guidelines, or related issues."
+      placeholder: "- Related issue: #\n- Design System: [Link]()"
