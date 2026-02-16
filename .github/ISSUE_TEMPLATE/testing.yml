@@ -1,7 +1,7 @@
 ---
 name: "🧪 Testing"
 description: Test a feature or create test cases.
-title: "[TEST] "
+title: "[TEST]"
 labels: ["TP: Testing"]
 body:
   - type: markdown
