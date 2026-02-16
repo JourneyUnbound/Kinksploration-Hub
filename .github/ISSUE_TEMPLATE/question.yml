@@ -1,0 +1,44 @@
+name: "❓Question"
+description: Ask a question or start a discussion
+title: "[QUESTION] "
+labels: ["TP: Question"]
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: "What's your question?"
+      placeholder: "Ask away!"
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: "🔍 Context"
+      description: "What are you trying to do?"
+  - type: textarea
+    id: attempted
+    attributes:
+      label: "Have you already tried..."
+      placeholder: "List what you've attempted"
+  - type: textarea
+    id: references
+    attributes:
+      label: "📚 References"
+      description: "Related documentation or issues"
+      placeholder: "- [Link](url)"
+  - type: checkboxes
+    id: what-would-help
+    attributes:
+      label: "🎯 What Would Help"
+      description: "What kind of answer would be most useful?"
+      options:
+        - label: "Yes/No clarification"
+        - label: "Step-by-step guidance"
+        - label: "Code example"
+        - label: "Conceptual explanation"
+        - label: "Link to documentation"
+  - type: input
+    id: other-help
+    attributes:
+      label: "Other"
+      placeholder: "Please specify what else would help..."
