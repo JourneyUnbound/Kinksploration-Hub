@@ -1,0 +1,78 @@
+---
+name: "🔒Security"
+description: Report a security concern or vulnerability.
+title: "[SECURITY] "
+labels: ["TP: Security", "P: Critical"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🔒 Security Issue
+        ⚠️ **If this is a serious vulnerability, please report it privately via email: scarlet@journeyunbound.ca**
+  - type: textarea
+    id: concern
+    attributes:
+      label: "Security concern"
+      description: "Describe the security issue."
+      placeholder: "Provide a high-level summary of the concern..."
+    validations:
+      required: true
+  - type: dropdown
+    id: severity
+    attributes:
+      label: "Severity"
+      options:
+        - "Critical - Immediate data exposure"
+        - "High - Potential data breach"
+        - "Medium - Security weakness"
+        - "Low - Minor concern"
+    validations:
+      required: true
+  - type: input
+    id: location
+    attributes:
+      label: "📍 Location"
+      description: "Where is the vulnerability? (Specific component, page, or API)"
+      placeholder: "e.g., /api/user/v1/profile"
+  - type: textarea
+    id: details
+    attributes:
+      label: "🔍 Details"
+      description: "Technical details, potential impact, and affected data/users."
+      placeholder: "What's the issue? What could an attacker do? What's at risk?"
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: "📋 Steps to Reproduce"
+      description: "Provide a numbered list of steps."
+      placeholder: |
+        1. 
+        2. 
+        3. 
+  - type: textarea
+    id: proposed-fix
+    attributes:
+      label: "💡 Proposed Fix"
+      description: "How should this be secured? Your recommendation."
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: "✅ Security Checklist"
+      options:
+        - label: "Input validation"
+        - label: "Output encoding"
+        - label: "Authentication/authorization"
+        - label: "Data encryption"
+        - label: "HTTPS/SSL"
+        - label: "CSRF protection"
+        - label: "SQL injection prevention"
+        - label: "XSS prevention"
+  - type: textarea
+    id: references
+    attributes:
+      label: "🔗 References"
+      description: "OWASP Reference, CVE, or related issues."
+      placeholder: |
+        - OWASP Reference: 
+        - CVE (if applicable): 
+        - Related issue: #
