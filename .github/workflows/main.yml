@@ -1,22 +1,27 @@
 name: Project CI
 
-# This tells GitHub to run the script every time you push to 'main'
 on:
   push:
     branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
-  build-and-test:
+  quality-check:
     runs-on: ubuntu-latest
-
     steps:
-      # 1. Pulls your code onto GitHub's virtual server
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      # 2. A simple message to show it works
-      - name: Run Workspace Check
+      # 1. CHECK FOR BROKEN LINKS
+      - name: Link Checker
+        uses: lycheeverse/lychee-action@v1.8.0
+        with:
+          # This scans all Markdown and HTML files in your repo
+          args: --verbose --no-progress "**/*.md" "**/*.html"
+
+      # 2. CHECK CODE FORMATTING
+      - name: Check Formatting
         run: |
-          echo "Starting automation for Kinksploration-Hub..."
-          ls -R
-          echo "Everything looks good!"
+          # This uses 'npx' to run Prettier without needing to install it locally
+          npx prettier . --check
