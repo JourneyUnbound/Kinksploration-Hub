@@ -27,6 +27,7 @@ body:
         - label: "Responsive design"
         - label: "Accessibility improvement"
         - label: "Animation/interaction"
+        - label: "Other"
   - type: input
     id: other-design
     attributes:
