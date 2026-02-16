@@ -1,0 +1,119 @@
+name: "🎉Release"
+description: Plan or track a release
+title: "[RELEASE] Version X.X"
+labels: ["TP: Release"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🚀 Release: Version X.X
+  - type: input
+    id: version
+    attributes:
+      label: "Version Number"
+      placeholder: "e.g., 1.2.0"
+    validations:
+      required: true
+  - type: input
+    id: date
+    attributes:
+      label: "Release Date"
+      placeholder: "YYYY-MM-DD"
+  - type: dropdown
+    id: type
+    attributes:
+      label: "Release Type"
+      options:
+        - "Major (breaking changes)"
+        - "Minor (new features)"
+        - "Patch (bug fixes)"
+  - type: checkboxes
+    id: checklist-pre
+    attributes:
+      label: "📋 Pre-Release Checklist"
+      options:
+        - label: "All planned features complete"
+        - label: "All critical bugs fixed"
+        - label: "Code reviewed"
+        - label: "Tests passing"
+        - label: "Documentation updated"
+        - label: "Changelog drafted"
+  - type: checkboxes
+    id: checklist-testing
+    attributes:
+      label: "🧪 Testing Checklist"
+      options:
+        - label: "Manual testing complete"
+        - label: "Regression testing done"
+        - label: "Mobile testing done"
+        - label: "Accessibility audit"
+        - label: "Performance check"
+  - type: checkboxes
+    id: checklist-deploy
+    attributes:
+      label: "🚢 Deployment Checklist"
+      options:
+        - label: "Backup created"
+        - label: "Deploy to staging"
+        - label: "Staging tested"
+        - label: "Deploy to production"
+        - label: "Production smoke test"
+  - type: checkboxes
+    id: checklist-post
+    attributes:
+      label: "📮 Post-Release Checklist"
+      options:
+        - label: "Release notes published"
+        - label: "Users notified"
+        - label: "Analytics monitoring"
+        - label: "Error monitoring active"
+        - label: "Support team briefed"
+  - type: textarea
+    id: whats-new
+    attributes:
+      label: "✨ What's New"
+      description: "List new features, improvements, and bug fixes."
+      placeholder: |
+        ### Features
+        - 
+        ### Improvements
+        - 
+        ### Bug Fixes
+        - 
+  - type: textarea
+    id: breaking-changes
+    attributes:
+      label: "🚨 Breaking Changes"
+      description: "List what might break and provide a migration guide."
+  - type: textarea
+    id: issues
+    attributes:
+      label: "📊 Included Issues"
+      description: "Link to closed features and fixed bugs."
+      placeholder: |
+        - Closes #
+        - Fixes #
+  - type: textarea
+    id: testing-focus
+    attributes:
+      label: "🔍 Testing Focus"
+      description: "What needs extra attention?"
+  - type: textarea
+    id: public-notes
+    attributes:
+      label: "📝 Release Notes"
+      description: "User-friendly, public-facing summary."
+  - type: textarea
+    id: next-release
+    attributes:
+      label: "⏭️ Next Release"
+      description: "What's coming next?"
+  - type: textarea
+    id: resources
+    attributes:
+      label: "🔗 Resources"
+      description: "Links to Staging, Production, and Changelog."
+      placeholder: |
+        - Staging URL: 
+        - Production URL: 
+        - Changelog:
