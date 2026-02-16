@@ -1,7 +1,6 @@
----
-name: "🧪 Testing"
+name: "🧪Testing"
 description: Test a feature or create test cases.
-title: "[TEST]"
+title: "[TEST] "
 labels: ["TP: Testing"]
 body:
   - type: markdown
@@ -37,14 +36,13 @@ body:
     id: test-scenarios
     attributes:
       label: "📋 Test Scenarios"
-      description: "What should be tested? Use the Given/When/Then format."
+      description: "Use the Given/When/Then format for each scenario."
       placeholder: |
         ### Scenario 1:
         **Given:** **When:** **Then:** - type: checkboxes
     id: environments
     attributes:
       label: "📱 Test Environments"
-      description: "Where to test"
       options:
         - label: "Desktop Chrome"
         - label: "Desktop Firefox"
@@ -62,7 +60,6 @@ body:
     attributes:
       label: "⚠️ Edge Cases"
       description: "What unusual scenarios should be tested?"
-      placeholder: "- "
   - type: checkboxes
     id: checklist
     attributes:
@@ -80,3 +77,12 @@ body:
     id: issues-found
     attributes:
       label: "🐛 Found Issues"
+      placeholder: "- Issue #"
+  - type: textarea
+    id: related
+    attributes:
+      label: "🔗 Related"
+      placeholder: |
+        - Feature PR: #
+        - Test suite: 
+        - Documentation:
