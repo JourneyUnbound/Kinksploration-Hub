@@ -39,7 +39,8 @@ body:
       description: "What should be tested?"
       placeholder: |
         ### Scenario 1:
-        **Given:** **When:** **Then:** - type: checkboxes
+        **Given:** **When:** **Then:**
+  - type: checkboxes
     id: environments
     attributes:
       label: "📱 Test Environments"
