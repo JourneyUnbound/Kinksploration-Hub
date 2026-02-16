@@ -496,6 +496,6 @@ Provide a private, judgment-free space for kinksters to:
 
 ---
 
-**Document Owner:** SpiralG  
+**Document Owner:** Scarlet Woods 
 **Last Review:** February 4, 2026  
 **Next Review:** Before V7 development
