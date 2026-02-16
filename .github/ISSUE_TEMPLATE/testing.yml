@@ -1,0 +1,82 @@
+---
+name: "🧪 Testing"
+description: Test a feature or create test cases.
+title: "[TEST] "
+labels: ["TP: Testing"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🧪 Testing Task
+  - type: textarea
+    id: what-needs-testing
+    attributes:
+      label: "What needs testing?"
+      description: "Feature, fix, or component to test."
+    validations:
+      required: true
+  - type: checkboxes
+    id: testing-type
+    attributes:
+      label: "Type of testing"
+      options:
+        - label: "Unit tests"
+        - label: "Integration tests"
+        - label: "End-to-end tests"
+        - label: "Manual testing"
+        - label: "Regression testing"
+        - label: "Performance testing"
+        - label: "Accessibility testing"
+        - label: "Security testing"
+  - type: input
+    id: other-testing
+    attributes:
+      label: "Other Testing Type"
+      placeholder: "Specify here..."
+  - type: textarea
+    id: test-scenarios
+    attributes:
+      label: "📋 Test Scenarios"
+      description: "What should be tested? Use the Given/When/Then format."
+      placeholder: |
+        ### Scenario 1:
+        **Given:** **When:** **Then:** - type: checkboxes
+    id: environments
+    attributes:
+      label: "📱 Test Environments"
+      description: "Where to test"
+      options:
+        - label: "Desktop Chrome"
+        - label: "Desktop Firefox"
+        - label: "Desktop Safari"
+        - label: "Mobile Safari (iOS)"
+        - label: "Mobile Chrome (Android)"
+        - label: "Tablet"
+  - type: textarea
+    id: test-data
+    attributes:
+      label: "📸 Test Data"
+      description: "What data is needed? (Test accounts, sample data, etc.)"
+  - type: textarea
+    id: edge-cases
+    attributes:
+      label: "⚠️ Edge Cases"
+      description: "What unusual scenarios should be tested?"
+      placeholder: "- "
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: "✅ Testing Checklist"
+      options:
+        - label: "Happy path works"
+        - label: "Error handling works"
+        - label: "Edge cases covered"
+        - label: "Mobile responsive"
+        - label: "Accessibility verified"
+        - label: "Performance acceptable"
+        - label: "No console errors"
+        - label: "Data saves correctly"
+  - type: textarea
+    id: issues-found
+    attributes:
+      label: "🐛 Found Issues"
