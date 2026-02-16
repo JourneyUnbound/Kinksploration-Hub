@@ -36,7 +36,7 @@ body:
     id: test-scenarios
     attributes:
       label: "📋 Test Scenarios"
-      description: "Use the Given/When/Then format for each scenario."
+      description: "What should be tested?"
       placeholder: |
         ### Scenario 1:
         **Given:** **When:** **Then:** - type: checkboxes
@@ -77,12 +77,13 @@ body:
     id: issues-found
     attributes:
       label: "🐛 Found Issues"
-      placeholder: "- Issue #"
+      description: "Bugs discovered during testing."
+      placeholder: "- Issue #___"
   - type: textarea
     id: related
     attributes:
       label: "🔗 Related"
       placeholder: |
-        - Feature PR: #
-        - Test suite: 
-        - Documentation:
+        - Feature PR: #___
+        - Test suite: _______________
+        - Documentation: _______________
