@@ -1,0 +1,81 @@
+name: 🚀 Enhancement
+description: Propose an improvement to an existing feature or component.
+title: "[ENHANCEMENT] "
+labels: ["TP: Enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🚀 Enhancement Request
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: "What existing feature would you like to improve?"
+      placeholder: "Describe which feature or component needs improvement..."
+    validations:
+      required: true
+  - type: checkboxes
+    id: enhancement-type
+    attributes:
+      label: "Type of enhancement:"
+      options:
+        - label: "Performance improvement"
+        - label: "User experience improvement"
+        - label: "Code quality improvement"
+        - label: "Documentation improvement"
+        - label: "Accessibility enhancement"
+        - label: "Visual/design polish"
+        - label: "Feature expansion"
+  - type: input
+    id: location
+    attributes:
+      label: "📍 Location"
+      description: "Where is the feature? (Specific page, component, or section)"
+      placeholder: "e.g. Navigation bar, Login screen"
+  - type: textarea
+    id: current-behavior
+    attributes:
+      label: "🔍 Current Behavior"
+      description: "What does it do now and what is the limitation?"
+      placeholder: "Describe the current functionality and why it isn't ideal."
+    validations:
+      required: true
+  - type: textarea
+    id: desired-behavior
+    attributes:
+      label: "✅ Desired Behavior"
+      description: "How should it work instead and why would this be better?"
+      placeholder: "Describe the improved experience and the benefit to users."
+    validations:
+      required: true
+  - type: textarea
+    id: implementation
+    attributes:
+      label: "💡 Suggested Implementation (Optional)"
+      description: "How could this be done? Share any technical approach or ideas."
+  - type: checkboxes
+    id: impact-who
+    attributes:
+      label: "📊 Who benefits from this enhancement?"
+      options:
+        - label: "All users"
+        - label: "Team/contributors"
+        - label: "Performance/technical"
+  - type: input
+    id: specific-user
+    attributes:
+      label: "Specific user type (if applicable)"
+      placeholder: "e.g. Admin users, mobile users..."
+  - type: dropdown
+    id: priority
+    attributes:
+      label: "How important is this?"
+      options:
+        - "Nice to have"
+        - "Should have"
+        - "Must have"
+  - type: textarea
+    id: evidence
+    attributes:
+      label: "📸 Examples"
+      description: "Drag and drop screenshots, mockups, or references here."
