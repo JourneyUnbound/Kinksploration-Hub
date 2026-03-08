@@ -28,7 +28,7 @@ jobs:
               '[SECURITY]':      'Security',
               '[RELEASE]':       'Release',
               '[TESTING]':       'Testing',
-              '[BRAIN DUMP]':    'Brain Dump',
+              '[BIZ]':           'Business',
             };
 
             const matchedPrefix = Object.keys(prefixToType).find(p => title.startsWith(p));
@@ -93,8 +93,7 @@ jobs:
                   }
                 }
               `, { issueId: issue.node_id });
-              projectItem = itemQuery.node.projectItems.nodes
-                .find(item => item.project.id === project.id);
+              projectItem = itemQuery.node.projectItems.nodes[0];
               if (projectItem) {
                 console.log(`✅ Found project item after ${(i+1)*5} seconds`);
                 break;
