@@ -1,0 +1,74 @@
+name: 💼 Business
+description: Track business contacts, leads, partnerships, and collaborations
+title: "[Biz]: "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to track business contacts, partnership opportunities, media leads, and collaboration conversations.
+  - type: input
+    id: contact_name
+    attributes:
+      label: 👤 Contact Name
+      placeholder: e.g. Ann Boone
+    validations:
+      required: true
+  - type: input
+    id: organization
+    attributes:
+      label: 🏢 Organization
+      placeholder: e.g. Womyns Ware
+    validations:
+      required: true
+  - type: dropdown
+    id: opportunity_type
+    attributes:
+      label: 🎯 Opportunity Type
+      description: What kind of opportunity is this?
+      options:
+        - "Partnership"
+        - "Retail / Distribution"
+        - "Media / Influencer"
+        - "Sponsorship"
+        - "Collaboration"
+        - "Referral"
+        - "Other"
+    validations:
+      required: true
+  - type: input
+    id: how_connected
+    attributes:
+      label: 🤝 How We Connected
+      placeholder: e.g. Met at munch, FetLife message, referral from...
+    validations:
+      required: false
+  - type: textarea
+    id: opportunity_details
+    attributes:
+      label: 💡 Opportunity Details
+      description: What is the potential opportunity or purpose of this contact?
+      placeholder: Describe the opportunity...
+    validations:
+      required: true
+  - type: textarea
+    id: next_steps
+    attributes:
+      label: ✅ Next Steps
+      description: What needs to happen next?
+      placeholder: |
+        - [ ] Send intro email
+        - [ ] Schedule call
+        - [ ] Follow up by...
+    validations:
+      required: false
+  - type: textarea
+    id: conversation_log
+    attributes:
+      label: 📝 Conversation Log
+      description: Notes from conversations, emails, meetings
+      placeholder: |
+        [Date] - Initial contact...
+        [Date] - Follow up call...
+    validations:
+      required: false
