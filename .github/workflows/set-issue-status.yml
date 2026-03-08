@@ -32,7 +32,6 @@ jobs:
               '[BRAIN DUMP]':    'Brain Dump',
             };
 
-            // Find which prefix matches the title
             const matchedPrefix = Object.keys(prefixToType).find(p => title.startsWith(p));
             const targetType = matchedPrefix ? prefixToType[matchedPrefix] : null;
 
@@ -42,7 +41,7 @@ jobs:
                 user(login: "JourneyUnbound") {
                   projectV2(number: 1) {
                     id
-                    fields(first: 20) {
+                    fields(first: 30) {
                       nodes {
                         ... on ProjectV2SingleSelectField {
                           id
@@ -53,7 +52,18 @@ jobs:
                           id
                           name
                         }
-
+                        ... on ProjectV2IterationField {
+                          id
+                          name
+                        }
+                        ... on ProjectV2NumberField {
+                          id
+                          name
+                        }
+                        ... on ProjectV2TextFieldCommon {
+                          id
+                          name
+                        }
                       }
                     }
                   }
@@ -64,17 +74,18 @@ jobs:
             const project = projectQuery.user.projectV2;
             const fields = project.fields.nodes;
 
-            // Debug: log all field names
-            console.log('Fields found:', fields.map(f => f.name + ' (' + f.__typename + ')').join(', '));
+            // Debug: log all fields
+            console.log('All fields:', JSON.stringify(fields.map(f => ({ name: f.name, id: f.id }))));
 
-            // Find Type field and target option
             const typeField = fields.find(f => f.name === 'Type');
             const typeOption = targetType ? typeField?.options?.find(o => o.name === targetType) : null;
-
-            // Find Date Created field
             const dateField = fields.find(f => f.name === 'Date Created');
 
-            // Retry loop — wait for issue to be added to project (up to 30 seconds)
+            console.log('Date Created field:', JSON.stringify(dateField));
+            console.log('Type field:', JSON.stringify(typeField));
+            console.log('Target type:', targetType);
+
+            // Retry loop — wait for issue to be added to project
             let projectItem = null;
             for (let i = 0; i < 6; i++) {
               await new Promise(resolve => setTimeout(resolve, 5000));
@@ -98,7 +109,7 @@ jobs:
                 console.log(`✅ Found project item after ${(i+1)*5} seconds`);
                 break;
               }
-              console.log(`Attempt ${i+1}: Issue not yet in project, retrying...`);
+              console.log(`Attempt ${i+1}: not in project yet, retrying...`);
             }
 
             if (!projectItem) {
@@ -124,11 +135,9 @@ jobs:
                 optionId: typeOption.id
               });
               console.log(`✅ Type set to: ${targetType}`);
-            } else {
-              console.log('No matching title prefix found — Type not set.');
             }
 
-            // Set Date Created to today
+            // Set Date Created
             if (dateField) {
               const today = new Date().toISOString().split('T')[0];
               await github.graphql(`
@@ -147,4 +156,6 @@ jobs:
                 date: today
               });
               console.log(`✅ Date Created set to: ${today}`);
+            } else {
+              console.log('Date Created field not found!');
             }
