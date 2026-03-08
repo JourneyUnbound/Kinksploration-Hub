@@ -1,7 +1,7 @@
 name: 🧠 Brain Dump
 description: Quick idea or thought - figure out the details later
 title: "[Brain Dump]: "
-labels: ["TP: Brain Dump"]
+labels: ["S: Brain Dump"]
 body:
   - type: markdown
     attributes:
