@@ -1,4 +1,4 @@
-name: Set Issue Status and Date Created
+name: Set Issue Type and Date Created
 
 on:
   issues:
@@ -8,7 +8,7 @@ jobs:
   set-project-fields:
     runs-on: ubuntu-latest
     steps:
-      - name: Set Status and Date Created based on TP label
+      - name: Set Type and Date Created based on TP label
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.JOURNEY_UNBOUND_PROJECT_AUTOMATION }}
@@ -16,7 +16,7 @@ jobs:
             const issue = context.payload.issue;
             const labels = issue.labels.map(l => l.name);
 
-            // Map TP: labels to Status field values
+            // Map TP: labels to Type field values
             const labelToStatus = {
               'TP: Design':        'Design',
               'TP: Documentation': 'Documentation',
@@ -62,8 +62,8 @@ jobs:
             const project = projectQuery.user.projectV2;
             const fields = project.fields.nodes;
 
-            // Find Status field and target option
-            const statusField = fields.find(f => f.name === 'Status');
+            // Find Type field and target option
+            const statusField = fields.find(f => f.name === 'Type');
             const statusOption = statusField?.options?.find(o => o.name === targetStatus);
 
             // Find Date Created field
@@ -93,7 +93,7 @@ jobs:
               return;
             }
 
-            // Set Status
+            // Set Type
             if (statusField && statusOption) {
               await github.graphql(`
                 mutation($projectId: ID!, $itemId: ID!, $fieldId: ID!, $optionId: String!) {
@@ -110,7 +110,7 @@ jobs:
                 fieldId: statusField.id,
                 optionId: statusOption.id
               });
-              console.log(`✅ Status set to: ${targetStatus}`);
+              console.log(`✅ Type set to: ${targetStatus}`);
             }
 
             // Set Date Created to today
