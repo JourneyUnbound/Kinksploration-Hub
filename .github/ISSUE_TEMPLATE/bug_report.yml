@@ -1,13 +1,12 @@
 name: 🐛 Bug Report
 description: Report a bug or issue with the Kinksploration Checklist
 title: "[Bug]: "
-labels: ["🐛 bug"]
+labels: []
 body:
   - type: markdown
     attributes:
       value: |
         Thanks for taking the time to report a bug! Please fill out the information below.
-
   - type: textarea
     id: description
     attributes:
@@ -16,7 +15,6 @@ body:
       placeholder: Tell us what went wrong...
     validations:
       required: true
-
   - type: textarea
     id: steps
     attributes:
@@ -29,7 +27,6 @@ body:
         4. See error
     validations:
       required: true
-
   - type: textarea
     id: expected
     attributes:
@@ -38,7 +35,6 @@ body:
       placeholder: Tell us what should have happened...
     validations:
       required: true
-
   - type: textarea
     id: actual
     attributes:
@@ -47,7 +43,6 @@ body:
       placeholder: Tell us what actually happened...
     validations:
       required: true
-
   - type: dropdown
     id: severity
     attributes:
@@ -61,35 +56,6 @@ body:
       default: 2
     validations:
       required: true
-
-  - type: dropdown
-    id: status
-    attributes:
-      label: Status
-      description: Current status of this issue
-      options:
-        - "S: Brain Dump"
-        - "S: Active Work"
-        - "S: Backlog"
-        - "S: Done"
-      default: 0
-    validations:
-      required: false
-
-  - type: dropdown
-    id: milestone
-    attributes:
-      label: Milestone
-      description: Which version should this be fixed in?
-      options:
-        - "V: 6.0"
-        - "V: 7.0"
-        - "V: 8.0"
-        - "Backlog"
-      default: 3
-    validations:
-      required: false
-
   - type: textarea
     id: screenshots
     attributes:
@@ -98,7 +64,6 @@ body:
       placeholder: Drag and drop images here...
     validations:
       required: false
-
   - type: textarea
     id: additional
     attributes:
