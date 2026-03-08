@@ -53,6 +53,10 @@ jobs:
                           id
                           name
                         }
+                        ... on ProjectV2DateField {
+                          id
+                          name
+                        }
                       }
                     }
                   }
