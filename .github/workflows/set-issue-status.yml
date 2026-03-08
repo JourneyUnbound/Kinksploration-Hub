@@ -2,38 +2,39 @@ name: Set Issue Type and Date Created
 
 on:
   issues:
-    types: [opened, labeled]
+    types: [opened]
 
 jobs:
   set-project-fields:
     runs-on: ubuntu-latest
     steps:
-      - name: Set Type and Date Created based on TP label
+      - name: Set Type and Date Created based on title prefix
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.JOURNEY_UNBOUND_PROJECT_AUTOMATION }}
           script: |
             const issue = context.payload.issue;
-            const labels = issue.labels.map(l => l.name);
+            const title = issue.title.toUpperCase();
 
-            // Map TP: labels to Type field values
-            const labelToStatus = {
-              'TP: Design':        'Design',
-              'TP: Documentation': 'Documentation',
-              'TP: Question':      'Question',
-              'TP: Enhancement':   'Enhancement',
-              'TP: Feature':       'Feature',
-              'TP: Bug':           'Bug',
-              'TP: Accessibility': 'Accessibility',
-              'TP: Security':      'Security',
-              'TP: Release':       'Release',
-              'TP: Testing':       'Testing',
-              'TP: Brain Dump':    'Brain Dump',
+            // Map title prefixes to Type field values
+            const prefixToType = {
+              '[DESIGN]':        'Design',
+              '[DOCS]':          'Documentation',
+              '[DOCUMENTATION]': 'Documentation',
+              '[QUESTION]':      'Question',
+              '[ENHANCEMENT]':   'Enhancement',
+              '[FEATURE]':       'Feature',
+              '[BUG]':           'Bug',
+              '[ACCESSIBILITY]': 'Accessibility',
+              '[SECURITY]':      'Security',
+              '[RELEASE]':       'Release',
+              '[TESTING]':       'Testing',
+              '[BRAIN DUMP]':    'Brain Dump',
             };
 
-            // Find which TP: label is on this issue
-            const matchedLabel = Object.keys(labelToStatus).find(l => labels.includes(l));
-            const targetStatus = matchedLabel ? labelToStatus[matchedLabel] : 'Brain Dump';
+            // Find which prefix matches the title
+            const matchedPrefix = Object.keys(prefixToType).find(p => title.startsWith(p));
+            const targetType = matchedPrefix ? prefixToType[matchedPrefix] : null;
 
             // Get the project
             const projectQuery = await github.graphql(`
@@ -63,8 +64,8 @@ jobs:
             const fields = project.fields.nodes;
 
             // Find Type field and target option
-            const statusField = fields.find(f => f.name === 'Type');
-            const statusOption = statusField?.options?.find(o => o.name === targetStatus);
+            const typeField = fields.find(f => f.name === 'Type');
+            const typeOption = targetType ? typeField?.options?.find(o => o.name === targetType) : null;
 
             // Find Date Created field
             const dateField = fields.find(f => f.name === 'Date Created');
@@ -94,7 +95,7 @@ jobs:
             }
 
             // Set Type
-            if (statusField && statusOption) {
+            if (typeField && typeOption) {
               await github.graphql(`
                 mutation($projectId: ID!, $itemId: ID!, $fieldId: ID!, $optionId: String!) {
                   updateProjectV2ItemFieldValue(input: {
@@ -107,10 +108,12 @@ jobs:
               `, {
                 projectId: project.id,
                 itemId: projectItem.id,
-                fieldId: statusField.id,
-                optionId: statusOption.id
+                fieldId: typeField.id,
+                optionId: typeOption.id
               });
-              console.log(`✅ Type set to: ${targetStatus}`);
+              console.log(`✅ Type set to: ${targetType}`);
+            } else {
+              console.log('No matching title prefix found — Type not set.');
             }
 
             // Set Date Created to today
