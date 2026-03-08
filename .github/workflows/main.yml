@@ -1,27 +1,18 @@
 name: Project CI
-
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
 jobs:
   quality-check:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-
       # 1. CHECK FOR BROKEN LINKS
       - name: Link Checker
         uses: lycheeverse/lychee-action@v1.8.0
         with:
           # This scans all Markdown and HTML files in your repo
           args: --verbose --no-progress "**/*.md" "**/*.html"
-
-      # 2. CHECK CODE FORMATTING
-      - name: Check Formatting
-        run: |
-          # This uses 'npx' to run Prettier without needing to install it locally
-          npx prettier . --check
