@@ -14,7 +14,7 @@ jobs:
           github-token: ${{ secrets.JOURNEY_UNBOUND_PROJECT_AUTOMATION }}
           script: |
             const issue = context.payload.issue;
-            const title = issue.title.toUpperCase();
+            const title = issue.title.toUpperCase().replace(/\[([^\]]+)\]:/g, "[$1]");
 
             // Map title prefixes to Type field values
             const prefixToType = {
