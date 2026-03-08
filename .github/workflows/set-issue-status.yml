@@ -38,7 +38,7 @@ jobs:
             // Get the project
             const projectQuery = await github.graphql(`
               query {
-                organization(login: "JourneyUnbound") {
+                user(login: "JourneyUnbound") {
                   projectV2(number: 1) {
                     id
                     fields(first: 20) {
@@ -59,7 +59,7 @@ jobs:
               }
             `);
 
-            const project = projectQuery.organization.projectV2;
+            const project = projectQuery.user.projectV2;
             const fields = project.fields.nodes;
 
             // Find Status field and target option
