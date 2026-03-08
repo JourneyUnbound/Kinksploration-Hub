@@ -16,7 +16,6 @@ jobs:
             const issue = context.payload.issue;
             const title = issue.title.toUpperCase().replace(/\[([^\]]+)\]:/g, "[$1]");
 
-            // Map title prefixes to Type field values
             const prefixToType = {
               '[DESIGN]':        'Design',
               '[DOCS]':          'Documentation',
@@ -35,7 +34,7 @@ jobs:
             const matchedPrefix = Object.keys(prefixToType).find(p => title.startsWith(p));
             const targetType = matchedPrefix ? prefixToType[matchedPrefix] : null;
 
-            // Get the project
+            // Get the project - only use verified valid fragment types
             const projectQuery = await github.graphql(`
               query {
                 user(login: "JourneyUnbound") {
@@ -56,14 +55,6 @@ jobs:
                           id
                           name
                         }
-                        ... on ProjectV2NumberField {
-                          id
-                          name
-                        }
-                        ... on ProjectV2TextFieldCommon {
-                          id
-                          name
-                        }
                       }
                     }
                   }
@@ -74,15 +65,14 @@ jobs:
             const project = projectQuery.user.projectV2;
             const fields = project.fields.nodes;
 
-            // Debug: log all fields
             console.log('All fields:', JSON.stringify(fields.map(f => ({ name: f.name, id: f.id }))));
 
             const typeField = fields.find(f => f.name === 'Type');
             const typeOption = targetType ? typeField?.options?.find(o => o.name === targetType) : null;
             const dateField = fields.find(f => f.name === 'Date Created');
 
-            console.log('Date Created field:', JSON.stringify(dateField));
-            console.log('Type field:', JSON.stringify(typeField));
+            console.log('Type field found:', !!typeField);
+            console.log('Date Created field found:', !!dateField);
             console.log('Target type:', targetType);
 
             // Retry loop — wait for issue to be added to project
@@ -157,5 +147,5 @@ jobs:
               });
               console.log(`✅ Date Created set to: ${today}`);
             } else {
-              console.log('Date Created field not found!');
+              console.log('Date Created field not found in project fields!');
             }
