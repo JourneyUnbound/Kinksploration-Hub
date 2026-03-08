@@ -70,27 +70,35 @@ jobs:
             // Find Date Created field
             const dateField = fields.find(f => f.name === 'Date Created');
 
-            // Get the project item for this issue
-            const itemQuery = await github.graphql(`
-              query($issueId: ID!) {
-                node(id: $issueId) {
-                  ... on Issue {
-                    projectItems(first: 10) {
-                      nodes {
-                        id
-                        project { id }
+            // Retry loop — wait for issue to be added to project (up to 30 seconds)
+            let projectItem = null;
+            for (let i = 0; i < 6; i++) {
+              await new Promise(resolve => setTimeout(resolve, 5000));
+              const itemQuery = await github.graphql(`
+                query($issueId: ID!) {
+                  node(id: $issueId) {
+                    ... on Issue {
+                      projectItems(first: 10) {
+                        nodes {
+                          id
+                          project { id }
+                        }
                       }
                     }
                   }
                 }
+              `, { issueId: issue.node_id });
+              projectItem = itemQuery.node.projectItems.nodes
+                .find(item => item.project.id === project.id);
+              if (projectItem) {
+                console.log(`✅ Found project item after ${(i+1)*5} seconds`);
+                break;
               }
-            `, { issueId: issue.node_id });
-
-            const projectItem = itemQuery.node.projectItems.nodes
-              .find(item => item.project.id === project.id);
+              console.log(`Attempt ${i+1}: Issue not yet in project, retrying...`);
+            }
 
             if (!projectItem) {
-              console.log('Issue not yet added to project — skipping.');
+              console.log('Issue not added to project after 30 seconds — skipping.');
               return;
             }
 
