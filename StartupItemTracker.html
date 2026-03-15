@@ -1,0 +1,238 @@
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans); color: var(--color-text-primary); }
+  .container { padding: 1rem 0; }
+  h2 { font-size: 18px; font-weight: 500; margin-bottom: 1rem; }
+  .add-form { background: var(--color-background-secondary); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem; margin-bottom: 1.5rem; }
+  .form-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 2fr; gap: 8px; margin-bottom: 8px; }
+  .form-grid input { width: 100%; }
+  input[type="text"], input[type="number"], input[type="url"] {
+    border: 0.5px solid var(--color-border-secondary);
+    border-radius: var(--border-radius-md);
+    padding: 7px 10px;
+    font-size: 14px;
+    font-family: var(--font-sans);
+    color: var(--color-text-primary);
+    background: var(--color-background-primary);
+    width: 100%;
+  }
+  input:focus { outline: none; border-color: var(--color-border-primary); }
+  .label { font-size: 12px; color: var(--color-text-secondary); margin-bottom: 3px; }
+  .btn { border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-md); padding: 7px 14px; font-size: 14px; cursor: pointer; background: transparent; color: var(--color-text-primary); font-family: var(--font-sans); }
+  .btn:hover { background: var(--color-background-secondary); }
+  .btn-primary { background: var(--color-text-primary); color: var(--color-background-primary); border-color: var(--color-text-primary); }
+  .btn-primary:hover { opacity: 0.85; }
+  .btn-danger { color: var(--color-text-danger); border-color: var(--color-border-danger); }
+  .btn-danger:hover { background: var(--color-background-danger); }
+  .btn-sm { padding: 4px 9px; font-size: 12px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; table-layout: fixed; }
+  th { text-align: left; font-weight: 500; font-size: 12px; color: var(--color-text-secondary); padding: 6px 10px; border-bottom: 0.5px solid var(--color-border-tertiary); }
+  td { padding: 8px 10px; border-bottom: 0.5px solid var(--color-border-tertiary); vertical-align: middle; word-break: break-word; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: var(--color-background-secondary); }
+  .tag { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: var(--border-radius-md); }
+  .summary-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 1.5rem; }
+  .metric { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 1rem; }
+  .metric-label { font-size: 13px; color: var(--color-text-secondary); margin-bottom: 4px; }
+  .metric-value { font-size: 22px; font-weight: 500; }
+  .compare-panel { background: var(--color-background-secondary); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem; margin-top: 1.5rem; }
+  .compare-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; margin-top: 10px; }
+  .compare-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 0.9rem; }
+  .compare-card.selected { border: 2px solid var(--color-border-info); }
+  .compare-card .name { font-weight: 500; font-size: 14px; margin-bottom: 4px; }
+  .compare-card .price { font-size: 18px; font-weight: 500; margin: 6px 0; }
+  .compare-card .source { font-size: 11px; color: var(--color-text-secondary); word-break: break-all; }
+  .best-badge { background: var(--color-background-info); color: var(--color-text-info); font-size: 11px; padding: 2px 8px; border-radius: var(--border-radius-md); display: inline-block; margin-bottom: 6px; }
+  .tabs { display: flex; gap: 4px; margin-bottom: 1rem; }
+  .tab { padding: 6px 14px; font-size: 14px; border-radius: var(--border-radius-md); cursor: pointer; border: 0.5px solid transparent; color: var(--color-text-secondary); }
+  .tab.active { border-color: var(--color-border-secondary); color: var(--color-text-primary); background: var(--color-background-primary); }
+  .section { display: none; }
+  .section.visible { display: block; }
+  .url-link { color: var(--color-text-info); text-decoration: none; font-size: 12px; }
+  .url-link:hover { text-decoration: underline; }
+  .cat-select { border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-md); padding: 7px 10px; font-size: 14px; font-family: var(--font-sans); color: var(--color-text-primary); background: var(--color-background-primary); width: 100%; }
+  .filter-row { display: flex; gap: 8px; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; }
+</style>
+
+<div class="container">
+  <div class="tabs">
+    <div class="tab active" onclick="showTab('list')">Supplies</div>
+    <div class="tab" onclick="showTab('compare')">Compare</div>
+  </div>
+
+  <div id="tab-list" class="section visible">
+    <div class="add-form">
+      <div class="form-grid">
+        <div><div class="label">Item name</div><input type="text" id="inp-name" placeholder="e.g. Printer paper" /></div>
+        <div><div class="label">Category</div>
+          <select class="cat-select" id="inp-cat">
+            <option value="Office">Office</option>
+            <option value="Technology">Technology</option>
+            <option value="Furniture">Furniture</option>
+            <option value="Marketing">Marketing</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div><div class="label">Unit cost ($)</div><input type="number" id="inp-cost" placeholder="0.00" min="0" step="0.01" /></div>
+        <div><div class="label">Website URL</div><input type="url" id="inp-url" placeholder="https://..." /></div>
+      </div>
+      <div style="display:flex; gap:8px; align-items:center;">
+        <div style="flex:1"><div class="label">Notes</div><input type="text" id="inp-notes" placeholder="Optional notes..." /></div>
+        <div style="margin-top:16px;"><button class="btn btn-primary" onclick="addItem()">+ Add item</button></div>
+      </div>
+    </div>
+
+    <div class="filter-row">
+      <span style="font-size:13px; color:var(--color-text-secondary);">Filter:</span>
+      <button class="btn btn-sm active-filter" onclick="setFilter('All')" id="f-All">All</button>
+      <button class="btn btn-sm" onclick="setFilter('Office')" id="f-Office">Office</button>
+      <button class="btn btn-sm" onclick="setFilter('Technology')" id="f-Technology">Technology</button>
+      <button class="btn btn-sm" onclick="setFilter('Furniture')" id="f-Furniture">Furniture</button>
+      <button class="btn btn-sm" onclick="setFilter('Marketing')" id="f-Marketing">Marketing</button>
+      <button class="btn btn-sm" onclick="setFilter('Other')" id="f-Other">Other</button>
+    </div>
+
+    <div class="summary-grid">
+      <div class="metric"><div class="metric-label">Total items</div><div class="metric-value" id="m-count">0</div></div>
+      <div class="metric"><div class="metric-label">Total cost</div><div class="metric-value" id="m-total">$0.00</div></div>
+      <div class="metric"><div class="metric-label">Most expensive</div><div class="metric-value" id="m-top" style="font-size:16px;">—</div></div>
+    </div>
+
+    <div style="background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); overflow:hidden;">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:22%">Item</th>
+            <th style="width:14%">Category</th>
+            <th style="width:12%">Cost</th>
+            <th style="width:28%">Website</th>
+            <th style="width:16%">Notes</th>
+            <th style="width:8%"></th>
+          </tr>
+        </thead>
+        <tbody id="items-body">
+          <tr id="empty-row"><td colspan="6" style="text-align:center; color:var(--color-text-secondary); padding: 2rem;">No items yet — add one above</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="tab-compare" class="section">
+    <p style="font-size:14px; color:var(--color-text-secondary); margin-bottom:1rem;">Compare same items from different sources. Select items from your list with the same name to see which is cheapest.</p>
+    <div id="compare-content"></div>
+  </div>
+</div>
+
+<script>
+  let items = [];
+  let nextId = 1;
+  let activeFilter = 'All';
+
+  const catColors = { Office:'c-blue', Technology:'c-purple', Furniture:'c-amber', Marketing:'c-teal', Other:'c-gray' };
+  const catBg = { Office:'var(--color-background-info)', Technology:'#EEEDFE', Furniture:'#FAEEDA', Marketing:'var(--color-background-success)', Other:'var(--color-background-secondary)' };
+  const catText = { Office:'var(--color-text-info)', Technology:'#534AB7', Furniture:'#854F0B', Marketing:'var(--color-text-success)', Other:'var(--color-text-secondary)' };
+
+  function showTab(t) {
+    document.querySelectorAll('.tab').forEach((el,i) => el.classList.toggle('active', ['list','compare'][i] === t));
+    document.getElementById('tab-list').classList.toggle('visible', t==='list');
+    document.getElementById('tab-compare').classList.toggle('visible', t==='compare');
+    if(t==='compare') renderCompare();
+  }
+
+  function setFilter(f) {
+    activeFilter = f;
+    document.querySelectorAll('.active-filter').forEach(el => el.classList.remove('active-filter'));
+    document.getElementById('f-'+f).classList.add('active-filter');
+    renderTable();
+  }
+
+  function addItem() {
+    const name = document.getElementById('inp-name').value.trim();
+    const cost = parseFloat(document.getElementById('inp-cost').value);
+    const url = document.getElementById('inp-url').value.trim();
+    const cat = document.getElementById('inp-cat').value;
+    const notes = document.getElementById('inp-notes').value.trim();
+    if(!name || isNaN(cost)) { alert('Please enter an item name and cost.'); return; }
+    items.push({ id: nextId++, name, cost, url, cat, notes });
+    document.getElementById('inp-name').value = '';
+    document.getElementById('inp-cost').value = '';
+    document.getElementById('inp-url').value = '';
+    document.getElementById('inp-notes').value = '';
+    renderTable();
+    updateMetrics();
+  }
+
+  function removeItem(id) {
+    items = items.filter(i => i.id !== id);
+    renderTable();
+    updateMetrics();
+  }
+
+  function renderTable() {
+    const body = document.getElementById('items-body');
+    const filtered = activeFilter === 'All' ? items : items.filter(i => i.cat === activeFilter);
+    if(filtered.length === 0) {
+      body.innerHTML = '<tr id="empty-row"><td colspan="6" style="text-align:center; color:var(--color-text-secondary); padding: 2rem;">' + (items.length===0 ? 'No items yet — add one above' : 'No items in this category') + '</td></tr>';
+      return;
+    }
+    body.innerHTML = filtered.map(item => {
+      const urlDisplay = item.url ? `<a href="${item.url}" class="url-link" target="_blank">${item.url.replace(/^https?:\/\/(www\.)?/,'').split('/')[0]}</a>` : '<span style="color:var(--color-text-secondary)">—</span>';
+      return `<tr>
+        <td style="font-weight:500">${esc(item.name)}</td>
+        <td><span class="tag" style="background:${catBg[item.cat]};color:${catText[item.cat]}">${item.cat}</span></td>
+        <td>$${item.cost.toFixed(2)}</td>
+        <td>${urlDisplay}</td>
+        <td style="color:var(--color-text-secondary);font-size:13px">${esc(item.notes||'')}</td>
+        <td><button class="btn btn-sm btn-danger" onclick="removeItem(${item.id})">Remove</button></td>
+      </tr>`;
+    }).join('');
+  }
+
+  function updateMetrics() {
+    const total = items.reduce((s,i) => s+i.cost, 0);
+    const top = items.reduce((a,b) => b.cost > (a?a.cost:-1) ? b : a, null);
+    document.getElementById('m-count').textContent = items.length;
+    document.getElementById('m-total').textContent = '$' + total.toFixed(2);
+    document.getElementById('m-top').textContent = top ? top.name + ' ($' + top.cost.toFixed(2) + ')' : '—';
+  }
+
+  function renderCompare() {
+    const groups = {};
+    items.forEach(item => {
+      const key = item.name.toLowerCase().trim();
+      if(!groups[key]) groups[key] = { label: item.name, items: [] };
+      groups[key].items.push(item);
+    });
+    const multiGroups = Object.values(groups).filter(g => g.items.length > 1);
+    const el = document.getElementById('compare-content');
+    if(multiGroups.length === 0) {
+      el.innerHTML = '<div style="text-align:center; padding:2rem; color:var(--color-text-secondary);">Add the same item name from multiple sources to compare prices here.</div>';
+      return;
+    }
+    el.innerHTML = multiGroups.map(g => {
+      const sorted = [...g.items].sort((a,b) => a.cost - b.cost);
+      const cheapest = sorted[0];
+      const cards = sorted.map(item => {
+        const isBest = item.id === cheapest.id;
+        const urlLabel = item.url ? item.url.replace(/^https?:\/\/(www\.)?/,'').split('/')[0] : 'No URL';
+        const savings = item.cost - cheapest.cost;
+        return `<div class="compare-card${isBest?' selected':''}">
+          ${isBest ? '<div class="best-badge">Best price</div>' : ''}
+          <div class="name">${esc(item.name)}</div>
+          <div class="price">$${item.cost.toFixed(2)}</div>
+          <div class="source">${urlLabel}</div>
+          ${!isBest ? `<div style="font-size:12px; color:var(--color-text-danger); margin-top:6px;">+$${savings.toFixed(2)} more</div>` : ''}
+        </div>`;
+      }).join('');
+      return `<div style="margin-bottom:1.5rem;">
+        <div style="font-size:14px; font-weight:500; margin-bottom:8px;">${esc(g.label)}</div>
+        <div class="compare-grid">${cards}</div>
+      </div>`;
+    }).join('');
+  }
+
+  function esc(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+</script>
